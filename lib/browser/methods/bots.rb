@@ -53,6 +53,7 @@ class Browser
       'Twitterbot' => 'Twitter URL expander',
       'UnwindFetch' => 'Gnip URL expander',
       'vkShare' => 'VKontake Sharer',
+      'Pinterest' => 'pinterest bot',
 
       # Uptime monitoring
       'check_http' => 'Nagios monitor',
@@ -70,7 +71,7 @@ class Browser
     BOT_REGEX = /\b(?:#{BOTS.map { |key, _| Regexp.escape(key) }.join('|')})\b|\A\W*\z/i.freeze
 
     def bot?
-      ua =~ BOT_REGEX
+      !(ua =~ BOT_REGEX).nil?
     end
   end
 end
